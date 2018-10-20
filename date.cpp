@@ -14,19 +14,20 @@
  // copy constructor?
 Date::Date (int mn, int dy, int yr)
 {
-   static int length[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   static int length[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };	// the length of months?
 
-   month = max(1, mn);
-   month = min(month,12);
+   month = max(1, mn);		// set the month to be something between 1 and 12?
+   month = min(month,12);	// if it's less than 1, make it 1, if more than 12, make it 12
 
-   day = max(1,dy);
-   day = min(day, length[month]);
+   day = max(1,dy);			// likewise set the day between 1 and the length of the month above
+   day = min(day, length[month]);	// Note, this means that a leap day can't be done.
 
-   year = max(1, yr);
+   year = max(1, yr);		// Years are only greater than 1, if it's less than 1 make it 1.
 }
 
 void Date::display()
 {
+	// month names are set up as a string array, we could do an enumeration...
    static char *name[] = {"nothing", "January", "February", "March", "April",
             "May", "June", "July", "August", "September", "October",
             "November", "December" };
@@ -40,14 +41,17 @@ Date::~Date()
    std::cout << "Thank You for using DateLine Services and have a nice date\n";
 }
 
-int Date::DaysSoFar()
-{
-   int total = 0;
-   static int length[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
-   for (int i=1; i < month; i++) total += length[i];
-   total += day;
-   return (total);
+int Date::DaysSoFar(){
+	// shows the total number of days so far in a given year given the date
+	// doesn't handle leap years correctly
+	int total = 0;
+	static int length[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };	// the length of months in days?
+	// if we used an enumeration I think we could avoid redefining this here
+	
+	for (int i=1; i < month; i++)
+		total += length[i];		// we might make this a code block so it's clear it goes with the for()
+	total += day;
+	return (total);
 }
 
 int Date::GetMonth()
@@ -55,9 +59,9 @@ int Date::GetMonth()
    return month;
 }
 
-void Date::SetMonth(int mn)
-{
-   month = max(1, mn);
-   month = min(month, 12);
+void Date::SetMonth(int mn){
+	// should we use this in the date copy constructor?
+	month = max(1, mn);
+	month = min(month, 12);
 }
 
