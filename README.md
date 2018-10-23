@@ -26,19 +26,31 @@ Step 5: Work on your project files and commit them to the project.
 
 I use Git Extensions to manage my Github files locally.
 
-  
-Anything below this line has not been updated for KandR.
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+This program can should just be compiled an will open in a console window.  You could also just pull the code files and compile them with any compiler.
+
+The project code files are:
+
+jdate.cpp	(main file)
+
+stdafx.h	(main header file)
+stdafx.cpp	(main header file code (empty))
+
+date.h	(the date class used)
+date.cpp	(the date class code)
+
+
 ### Prerequisites
 
-What things you need to install the software and how to install them
+This program and such was written using Visual C++ 2010 Express
+
+Although you should be able to pull out just the code files and compile them with any C++ compiler.
 
 ```
-Give examples
+I don't have any examples of this
 ```
 
 ### Installing
