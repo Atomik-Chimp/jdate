@@ -1,4 +1,6 @@
 
+// date.cpp : Defines the date class code.
+//
 // date class code:
 // -- Any Functions you don't want inline
 
@@ -8,32 +10,44 @@
 
 // basic constructor
  Date::Date (){
-	month = day = year = 1;	
+	month = day = year = 1;		// default constructor, sets the date to January 1, 0001
 }
 
  // copy constructor?
 Date::Date (int mn, int dy, int yr)
 {
-   static int length[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };	// the length of months?
+	static int length[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };	// the length of months
+	// So month is an integer value between 1 and 12, it can be used to calculate the length of the month in days
+	// by using month as an index to the length array above.  Maybe we could make length a function which returns
+	// the number of days in a month.
 
-   month = max(1, mn);		// set the month to be something between 1 and 12?
-   month = min(month,12);	// if it's less than 1, make it 1, if more than 12, make it 12
+	// The below code doesn't report trying to set month to an error value (no error checking really)
+	month = max(1, mn);		// set the month to be something between 1 and 12?
+	month = min(month,12);	// if it's less than 1, make it 1, if more than 12, make it 12
+	// it does fix errors by preventing bad values to be entered, but acts silently
 
-   day = max(1,dy);			// likewise set the day between 1 and the length of the month above
-   day = min(day, length[month]);	// Note, this means that a leap day can't be done.
 
-   year = max(1, yr);		// Years are only greater than 1, if it's less than 1 make it 1.
+	day = max(1,dy);			// likewise set the day between 1 and the length of the month above
+	day = min(day, length[month]);	// Note, this means that a leap day can't be done.
+	
+	year = max(1, yr);		// Years are only greater than 1, if it's less than 1 make it 1.
+
+	// So our valid date range is positive dates starting at January 1, 0001, till we overflow the year int
+	// (how big is an int in Visual Studio?)
 }
 
 void Date::display()
 {
 	// month names are set up as a string array, we could do an enumeration...
-   static char *name[] = {"nothing", "January", "February", "March", "April",
-            "May", "June", "July", "August", "September", "October",
-            "November", "December" };
+	static char *name[] = {"nothing", "January", "February", "March", "April", 
+		"May", "June", "July", "August", "September", "October", 
+		"November", "December" };
+	
+	std::cout << '\n' << name[month] << ' ' << day << "," << year << '\n';
+	std::cout << "Days so far: " << DaysSoFar() << '\n';
 
-   std::cout << '\n' << name[month] << ' ' << day << "," << year << '\n';
-   std::cout << "Days so far: " << DaysSoFar() << '\n';
+	// output date format is: Month Day, Year
+
 }
 
 Date::~Date()
@@ -56,7 +70,7 @@ int Date::DaysSoFar(){
 
 int Date::GetMonth()
 {
-   return month;
+   return month;	// returns the month portion of the date
 }
 
 void Date::SetMonth(int mn){
