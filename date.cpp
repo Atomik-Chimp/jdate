@@ -8,7 +8,7 @@
 
 // constructor definitions
 
-// basic constructor
+// default constructor
  Date::Date (){
 	month = day = year = 1;		// default constructor, sets the date to January 1, 0001
 }
@@ -68,14 +68,46 @@ int Date::DaysSoFar(){
 	return (total);
 }
 
-int Date::GetMonth()
-{
-   return month;	// returns the month portion of the date
+// Functions specific to the Month
+int Date::GetMonth(){
+	return month;	// returns the month portion of the date
 }
 
 void Date::SetMonth(int mn){
 	// should we use this in the date copy constructor?
 	month = max(1, mn);
 	month = min(month, 12);
+}
+
+// Functions specific to the day portion
+int Date::GetDay(){
+	return day;		// function to return the day of the month
+}
+
+void Date::SetDay(int dy){
+	// function to set the day of the month
+
+	static int length[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };	// the length of months
+	// So month is an integer value between 1 and 12, it can be used to calculate the length of the month in days
+	// by using month as an index to the length array above.  Maybe we could make length a function which returns
+	// the number of days in a month.
+
+	day = max(1,dy);			// likewise set the day between 1 and the length of the month above
+	day = min(day, length[month]);	// Note, this means that a leap day can't be done.
+	
+}
+
+// Functions specific to the year portion
+int Date::GetYear(){
+	return year;	// function to return the year
+}
+
+void Date::SetYear(int yr){
+	// function to set the year
+
+	year = max(1, yr);		// Years are only greater than 1, if it's less than 1 make it 1.
+
+	// So our valid year range is positive starting0001, till we overflow the year int
+	// (how big is an int in Visual Studio?)
 }
 

@@ -17,6 +17,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	Date *date3;				// construct a pointer to a date object
 	Date *date6;				// another pointer to a date object
 	Date date5(1,1,1);			// construct date5 object, happens to be set to the default date
+
 	date3 = new Date(45,45,44545);	// create a date object and set the date3 pointer to it
 									// Note this is a very strange date, and has issues 
 									// But there is no error checking in the class, it just corrects it
@@ -25,6 +26,10 @@ int _tmain(int argc, _TCHAR* argv[])
 																						// note it could be changed independantly from this statement
 
 	mydate.display();				// print out mydate
+	std::cout << "The Month of this date is: " << mydate.GetMonth() << std::endl;
+	std::cout << "The Day of this date is: " << mydate.GetDay() << std::endl;
+	std::cout << "The Year of this date is: " << mydate.GetYear() << std::endl;
+
 	date2.display();				// print out date2
 	date3->display();				// print out what date3 points to
 
