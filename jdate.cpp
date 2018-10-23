@@ -22,6 +22,10 @@ int _tmain(int argc, _TCHAR* argv[])
 									// Note this is a very strange date, and has issues 
 									// But there is no error checking in the class, it just corrects it
 
+	/* enum month_name{ nothing, January, February, March, April, May, June, July, 
+		August, September, October, November, December }
+	*/
+
 	std::cout << "Notes: The date format is output as Month Day, Year" << std::endl;	// Let us know what the format was
 																						// note it could be changed independantly from this statement
 
@@ -40,12 +44,15 @@ int _tmain(int argc, _TCHAR* argv[])
 	delete(date3);					// deletes the date3 object
 	date6 = new Date(1,1,1);		// creats a new date and sets date6 to it
 
-	std::cout << "OK: " << date3->GetMonth() << '\n';	// *** uh-oh, date3 was deleted
+	std::cout << std::endl;
+	std::cout << "date3 has been deleted and now used below " << std::endl;
+	std::cout << "OK: date3->Month is:" << date3->GetMonth() << '\n';	// *** uh-oh, date3 was deleted
 	date3->SetMonth(4);									// *** sets date3 to a value after it was deleted
-	std::cout << "OK: " << date3->GetMonth() << '\n';	// *** uses date3 after it was deleted
-
+	std::cout << "OK: now date3->Month is:" << date3->GetMonth() << '\n';	// *** uses date3 after it was deleted
 	date3->display();		// *** uses date3 after it was deleted
-   
+	std::cout << "End of date3 being used." << std::endl;
+
+
 	date4.display();		// outputs date4 which is set to the default date (uses default constructor) 
 
 	date5.SetMonth(3);		// sets the month in date5, which was default
