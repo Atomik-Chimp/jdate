@@ -8,8 +8,6 @@
 int max (int a, int b);		// returns the maximum of two numbers
 int min (int a, int b);		// returns the minimum of two numbers
 
-
-// noticed there is a bunch missing from this implimentation, what about setting or getting a year or day?
 class Date
 {
  public:
@@ -32,5 +30,5 @@ class Date
     ~Date();							// Destructor
  private:
     int month, day, year;				// where the date is actualy stored
-    int DaysSoFar();					// the days from the first of the year to the date
+    int DayoftheYear();					// the days from the first of the year to the date
 };
