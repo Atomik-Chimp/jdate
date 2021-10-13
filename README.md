@@ -37,9 +37,11 @@ The project code files are:
 jdate.cpp	(main file)
 
 stdafx.h	(main header file)
+
 stdafx.cpp	(main header file code (empty))
 
 date.h	(the date class used)
+
 date.cpp	(the date class code)
 
 
