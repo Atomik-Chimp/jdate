@@ -101,6 +101,7 @@ int min (int a, int b)
 	date3 = new Date(45,45,44545);	// create a date object and set the date3 pointer to it
 									// Note this is a very strange date, and has issues 
 									// But there is no error checking in the class, it just corrects it
+									
 	date3->display();				// print out what date3 points to
 	std::cout << "OK: " << date3->GetMonth() << '\n';		// shows the month part of date3
 	date3->SetMonth(4);										// sets the month part of date3
